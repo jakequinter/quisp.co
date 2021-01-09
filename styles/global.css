@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+  color: #4b5563;
+  background-color: #f9fafb;
+  font-family: 'DM Sans, Roboto, sans-serif';
+  font-size: 16px;
+}
