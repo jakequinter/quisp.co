@@ -34,6 +34,7 @@ const Shell: React.FC<ShellProps> = ({ children }) => {
   return (
     <>
       <div className="flex items-center m-auto max-w-screen-xl p-4">
+        <NavButton url="/" text="Home" />
         <NavButton url="/about" text="About" />
         <NavButton url="/product" text="Product" />
         <a className="ml-auto" href="/login">
@@ -47,7 +48,7 @@ const Shell: React.FC<ShellProps> = ({ children }) => {
       </div>
 
       <div
-        className="flex-col max-w-screen-xl m-auto justify-content my-24 px-2"
+        className="flex-col max-w-screen-xl m-auto justify-content my-24 px-4"
         // style={{ minHeight: 'Calc(100vh - 87px)' }}
       >
         {children}
