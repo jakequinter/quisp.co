@@ -1,4 +1,5 @@
 import React, { useState, useEffect, ReactNode } from 'react';
+import Link from 'next/link';
 
 interface ShellProps {
   children: ReactNode;
@@ -16,17 +17,18 @@ const NavButton = ({ url, text }: NavButtonProps) => {
   }, []);
 
   return (
-    <a
-      onClick={() => setIsActive(!isActive)}
-      className={
-        isActive
-          ? 'bg-blue-200 text-blue-700 px-4 py-2 text-lg font-medium  rounded'
-          : 'hover:bg-blue-200 text-gray-900 px-4 py-2 text-lg font-medium  rounded'
-      }
-      href={url}
-    >
-      {text}
-    </a>
+    <Link href={url}>
+      <a
+        onClick={() => setIsActive(!isActive)}
+        className={
+          isActive
+            ? 'bg-blue-200 text-blue-700 px-4 py-2 text-lg font-medium  rounded'
+            : 'hover:bg-blue-200 text-gray-900 px-4 py-2 text-lg font-medium  rounded'
+        }
+      >
+        {text}
+      </a>
+    </Link>
   );
 };
 
@@ -37,14 +39,14 @@ const Shell: React.FC<ShellProps> = ({ children }) => {
         <NavButton url="/" text="Home" />
         <NavButton url="/about" text="About" />
         <NavButton url="/product" text="Product" />
-        <a className="ml-auto" href="/login">
+        <Link href="/login">
           <button
             type="button"
-            className="inline-flex shadow-lg px-8 py-2 border border-transparent text-base font-medium rounded text-blue-700 bg-white transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-flex ml-auto shadow-lg px-8 py-2 border border-transparent text-base font-medium rounded text-blue-700 bg-white transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Login
           </button>
-        </a>
+        </Link>
       </div>
 
       <div

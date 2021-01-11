@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import { BsPersonPlus } from 'react-icons/bs';
 import { FaRegIdCard } from 'react-icons/fa';
@@ -109,13 +110,15 @@ export default function Home() {
               to become the easy-to-use software that uncomplicates the process
               of how bars and restaurants store and mangage their members data.
             </p>
-            <div className="flex justify-center md:justify-start">
-              <button
-                type="button"
-                className="inline-flex items-center my-8 px-6 py-3 mr-2 border border-transparent font-medium rounded text-blue-700 bg-blue-200 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Sign in overview <FiExternalLink className="ml-2" size={20} />
-              </button>
+            <div className="flex justify-center lg:justify-start">
+              <Link href="/about/sign-in-overview">
+                <button
+                  type="button"
+                  className="inline-flex items-center my-8 px-6 py-3 mr-2 border border-transparent font-medium rounded text-blue-700 bg-blue-200 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Sign in overview <FiExternalLink className="ml-2" size={20} />
+                </button>
+              </Link>
             </div>
           </div>
           <div className="flex justify-center lg:justify-end ">
