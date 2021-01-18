@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BsPersonPlus } from 'react-icons/bs';
@@ -40,18 +41,22 @@ export default function Home() {
             Ditch the outdated three-ring binder approach. Remove the hassle of
             decades of paper with a single platform
           </p>
-          <button
-            type="button"
-            className="inline-flex items-center px-6 py-3 mr-2 border border-transparent font-medium rounded text-blue-700 bg-blue-200 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Get started
-          </button>
-          <button
-            type="button"
-            className="inline-flex items-center px-6 py-3 ml-2 border border-gray-200 hover:border-gray-300 font-medium rounded text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            More about us
-          </button>
+          <Link href="/sign-up">
+            <button
+              type="button"
+              className="inline-flex items-center px-6 py-3 mr-2 border border-transparent font-medium rounded text-blue-700 bg-blue-200 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Get started
+            </button>
+          </Link>
+          <Link href="/about">
+            <button
+              type="button"
+              className="inline-flex items-center px-6 py-3 ml-2 border border-gray-200 hover:border-gray-300 font-medium rounded text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              More about us
+            </button>
+          </Link>
         </div>
         <video
           style={{
@@ -121,7 +126,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end ">
+          <div className="flex justify-center lg:justify-end">
             <img
               className="rounded-xl"
               style={{ maxHeight: '400px' }}

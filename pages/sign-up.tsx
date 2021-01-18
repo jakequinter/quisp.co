@@ -3,19 +3,19 @@ import { FcGoogle } from 'react-icons/fc';
 
 import Shell from '../components/Shell';
 
-const login = () => {
+const SignUp = () => {
   return (
     <Shell>
       <div className="flex justify-center">
         <div className="flex-col w-1/3">
-          <h1 className="text-4xl pb-2 text-gray-900 font-bold">
-            Sign in to your account
+          <h1 className="text-4xl pb-2 text-gray-900 font-bold text-center">
+            Create your account
           </h1>
           <p className="text-center">
-            Don't have an account?{' '}
+            Already have an account?{' '}
             <span className="text-blue-500">
-              <Link href="/sign-up">
-                <a>Sign up</a>
+              <Link href="/login">
+                <a>Sign in</a>
               </Link>
             </span>
           </p>
@@ -23,7 +23,7 @@ const login = () => {
             type="button"
             className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-white border-gray-200 hover:border-gray-300"
           >
-            <FcGoogle className="mr-4" size={20} /> Sign in with Google
+            <FcGoogle className="mr-4" size={20} /> Sign up with Google
           </button>
           <div className="flex my-8 items-center">
             <hr className="w-1/3" />
@@ -80,4 +80,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default SignUp;
