@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 
-import Shell from '../components/Shell';
+import Shell from '@/components/Container';
+import { useAuth } from '@/lib/auth';
 
 const login = () => {
+  const auth = useAuth();
+
   return (
     <Shell>
+      {auth.user ? <p>{auth.user.email}</p> : <p>no user</p>}
       <div className="flex justify-center">
         <div className="flex-col w-1/3">
           <h1 className="text-4xl pb-2 text-gray-900 font-bold">
@@ -22,6 +26,7 @@ const login = () => {
           <button
             type="button"
             className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-white border-gray-200 hover:border-gray-300"
+            onClick={() => auth.signinWithGoogle()}
           >
             <FcGoogle className="mr-4" size={20} /> Sign in with Google
           </button>

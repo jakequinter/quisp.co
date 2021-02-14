@@ -1,4 +1,4 @@
-import Shell from '../components/Shell';
+import Shell from '@/components/Container';
 
 const faq = () => {
   return (

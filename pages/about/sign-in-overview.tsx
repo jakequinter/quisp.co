@@ -1,4 +1,4 @@
-import Shell from '../../components/Shell';
+import Shell from '@/components/Container';
 
 const signInOverview = () => {
   return (
@@ -60,7 +60,7 @@ const signInOverview = () => {
               </div>
             </div>
             <li className="pt-8">
-              Customers (now members) can then choose to sign into a separte
+              Customers (now members) can then choose to sign into a seperate
               paper system which keeps track of all the members who have signed
               in for the week. This usually costs $1 or $2. You must be signed
               in to the weekly system in order to win the drawing. This means if
@@ -69,7 +69,7 @@ const signInOverview = () => {
             </li>
             <li className="pt-8">
               A weekly winner is drawn each week. Bars and restaurants usually
-              have a set time they draw each week (i.e., Every wednesday at
+              have a set time they draw each week (i.e., Every Wednesday at
               6:00pm). If your number is drawn and you are signed into the book,
               you win. If your number is drawn and you are not signed in to the
               weekly book, too bad, the money just keeps growing for a different
@@ -87,10 +87,10 @@ const signInOverview = () => {
               $1.{' '}
             </li>
             <li className="pt-8">
-              Let’s say all 500 people sign in. This means there is $500 in the
-              pot (presuming you start at $0). Half of this is usually kept out
-              so when someone wins, the pot doesn’t start back at zero. So,
-              there’s $250 eligible for someone to win.{' '}
+              Let’s say 500 people sign in. This means there is $500 in the pot
+              (presuming you start at $0). Half of this is usually kept out so
+              when someone wins, the pot doesn’t start back at zero. So, there’s
+              $250 eligible for someone to win.{' '}
             </li>
             <li className="pt-8">
               If one of the 500 members who did not sign the weekly sign in book
@@ -110,7 +110,7 @@ const signInOverview = () => {
             Working for a business that provided its customers with the option
             to join a sign in, I noticed many complications to this process. I’m
             sure there are others, but this is just what I experienced in my
-            3-4ish years working in the bar and restaurant industry.
+            3-4ish years working with the sign in.
           </p>
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-900 pb-4">
@@ -119,7 +119,7 @@ const signInOverview = () => {
             <p>
               The local business I worked for started their sign in back in
               2006. If you flipped through their three-ring binder back to the
-              year 2006, you would find the initially required 2 pieces of
+              year 2006, you would find they initially required 2 pieces of
               information. First, your sign-in number, which starts at 1, and
               increments accordingly. The next person would be 2, then 3, then
               4, and so on. Secondly, they required your signature. Fast forward

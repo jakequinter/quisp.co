@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Shell from '../../components/Shell';
+import Shell from '@/components/Container';
 
 const index = () => {
   return (

@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 
-import Shell from '../components/Shell';
+import { useAuth } from '@/lib/auth';
+
+import Shell from '@/components/Container';
 
 const SignUp = () => {
+  const auth = useAuth();
+
   return (
     <Shell>
       <div className="flex justify-center">
@@ -22,6 +26,7 @@ const SignUp = () => {
           <button
             type="button"
             className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-white border-gray-200 hover:border-gray-300"
+            onClick={() => auth.signinWithGoogle()}
           >
             <FcGoogle className="mr-4" size={20} /> Sign up with Google
           </button>
