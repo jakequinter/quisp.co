@@ -5,14 +5,13 @@ import Shell from '@/components/Container';
 const index = () => {
   return (
     <Shell>
-      <div className="max-w-screen-md mx-auto">
-        <div className="text-center">
-          <h3 className="text-blue-500 font-bold">INTRODUCING</h3>
-          <h1 className="text-4xl pb-2 text-gray-900 font-bold">Quisp</h1>
-          {/* <img src="/party.png" style={{ maxHeight: '500px' }} /> */}
+      <div className="max-w-screen-sm mx-auto">
+        <div className="text-center mb-24">
+          <h3 className="text-indigo-500 font-bold">INTRODUCING</h3>
+          <h1 className="text-4xl pb-2 font-bold">Quisp</h1>
         </div>
-        <div className="pt-16">
-          <h3 className="text-2xl font-bold text-gray-900 pb-4">Our story</h3>
+        <div>
+          <h3 className="text-2xl font-bold pb-4">Our story</h3>
           <p className="pb-4">
             In 2013, I started working part-time at a bar/restaurant/bowling
             alley, where I quickly became accustomed to the process of the sign
@@ -30,9 +29,7 @@ const index = () => {
           </p>
         </div>
         <div className="pt-16">
-          <h3 className="text-2xl font-bold text-gray-900 pb-4">
-            What's happening
-          </h3>
+          <h3 className="text-2xl font-bold pb-4">What's happening</h3>
           <p>
             We’re currently looking for any bars, restaurants, bowling alleys,
             anyone that offers their customers a sign in to test our product.

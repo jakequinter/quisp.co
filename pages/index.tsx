@@ -1,35 +1,70 @@
 import Router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BsPersonPlus } from 'react-icons/bs';
-import { FaRegIdCard } from 'react-icons/fa';
-import { FiExternalLink, FiMonitor } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
+
+interface HowItWorksFeatureProps {
+  imgSrc: string;
+  title: string;
+  text: string;
+}
+
+interface FeatureProps {
+  imgSrc: string;
+  title: string;
+  text: string;
+}
+
+const HowItWorksFeature = ({ imgSrc, title, text }: HowItWorksFeatureProps) => (
+  <div className="flex-col justify-center text-center px-12 py-8">
+    <div className="flex justify-center pb-4">
+      <Image src={imgSrc} height={50} width={50} />
+    </div>
+    <h3 className="text-xl font-bold pb-2">{title}</h3>
+    <p className="text-gray-700">{text}</p>
+  </div>
+);
+
+const Feature = ({ imgSrc, title, text }: FeatureProps) => (
+  <div className="pr-8">
+    <Image src={imgSrc} height={50} width={50} />
+    <h5 className="text-xl pt-4 font-bold text-gray-900">{title}</h5>
+    <p>{text}</p>
+  </div>
+);
 
 export default function Home() {
   return (
     <>
+      {/* Jumbotron section */}
       <div
-        className="mb-48"
         style={{
           background:
-            'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #D1D5DB 44.79%, rgba(255, 255, 255, 0) 100%), rgba(75, 85, 99, 0.3)'
+            'linear-gradient(180deg, #F7FAFC 44.98%, rgba(255, 255, 255, 0) 100%), rgba(55, 65, 81, 0.3)'
+          // 'linear-gradient(180deg, #FFFFFF 57.81%, rgba(255, 255, 255, 0) 100%), rgba(156, 163, 175, 0.3)'
         }}
       >
-        <nav className="flex justify-between py-4 max-w-6xl mx-auto text-gray-600 font-medium">
-          <a href="/">Quisp</a>
+        <nav className="flex justify-between py-4 max-w-6xl mx-auto text-gray-600">
+          <Link href="/">
+            <a className="mx-4">Quisp</a>
+          </Link>
           <div>
-            <a className="px-4" href="/about">
-              About
-            </a>
-            <a className="px-4" href="/faq">
-              FAQ
-            </a>
-            <a className="px-4" href="/login">
-              Sign in
-            </a>
+            <Link href="/about">
+              <a className="mx-4 hover:text-gray-800">About</a>
+            </Link>
+            <Link href="faq">
+              <a className="mx-4 hover:text-gray-800" href="/faq">
+                FAQ
+              </a>
+            </Link>
+            <Link href="/login">
+              <a className="mx-4 hover:text-gray-800" href="/login">
+                Sign in
+              </a>
+            </Link>
           </div>
         </nav>
-        <div className="text-center py-36">
+        <div className="text-center py-24">
           <h1 className="text-4xl w-1/4 mx-auto pb-8">
             Sign-in software designed for{' '}
             <span className="text-indigo-500">your business</span>
@@ -40,14 +75,15 @@ export default function Home() {
           </p>
           <button
             type="button"
-            className="inline-flex items-center px-12 py-4 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-400 to-indigo-500 hover:from-indigo-500 hover:to-indigo-600"
+            className="inline-flex items-center px-12 py-4 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-300 to-indigo-400 hover:from-indigo-400 hover:to-indigo500 focus:outline-none focus:ring-2  focus:ring-indigo-500"
           >
             Get started for free
           </button>
         </div>
       </div>
-      <div className="flex max-w-6xl mx-auto">
-        <div className="grid gap-60 sm:grid-cols-1 md:grid-cols-2 items-center">
+
+      <div className="max-w-6xl mx-auto my-48">
+        <div className="grid gap-36 sm:grid-cols-1 md:grid-cols-2 items-center">
           <div>
             <h5 className="text-3xl pb-4">Store members electronically</h5>
             <p>
@@ -60,16 +96,16 @@ export default function Home() {
             <Image
               className="rounded-xl"
               src="/features/whatwesolve.png"
-              width={500}
-              height={500}
+              width={400}
+              height={400}
             />
           </div>
-          <div className="ml-auto">
+          <div>
             <Image
               className="rounded-xl"
               src="/features/whatwesolve.png"
-              width={500}
-              height={500}
+              width={400}
+              height={400}
             />
           </div>
           <div>
@@ -92,9 +128,108 @@ export default function Home() {
             <Image
               className="rounded-xl"
               src="/features/whatwesolve.png"
-              width={500}
-              height={500}
+              width={400}
+              height={400}
             />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-100 mb-48">
+        <div className="max-w-6xl py-24 mx-auto">
+          <h3 className="text-3xl text-center">How it works</h3>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
+            <HowItWorksFeature
+              imgSrc="/howitworks/signup.svg"
+              title="Sign up"
+              text="Create an account and start managing your members today"
+            />
+            <HowItWorksFeature
+              imgSrc="/howitworks/addmembers.svg"
+              title="Add members"
+              text="Your employees add and update members to the sign in"
+            />
+            <HowItWorksFeature
+              imgSrc="/howitworks/manage.svg"
+              title="Manage"
+              text="Prevent common human errors like duplicate entries or numbers"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Features section */}
+      <div className="max-w-6xl mx-auto mb-48">
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center">
+          <div>
+            <div className="pb-16">
+              <Feature
+                imgSrc="/features/simpleinterface.svg"
+                title="Simple interface"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+            <div className="pb-16">
+              <Feature
+                imgSrc="/features/authorization.svg"
+                title="Authorization"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+            <div>
+              <Feature
+                imgSrc="/features/findmembers.svg"
+                title="Easily find members"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+          </div>
+          <div>
+            <div className="pb-16">
+              <Feature
+                imgSrc="/features/fastdashboard.svg"
+                title="Fast dashboard"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+            <div className="pb-16">
+              <Feature
+                imgSrc="/features/nopaper.svg"
+                title="No more paper"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+            <div>
+              <Feature
+                imgSrc="/features/247support.svg"
+                title="24/7 Support"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+          </div>
+          <div className="col-span-2 ml-36">
+            <h3 className="text-3xl pb-4">Features</h3>
+            <p>Avoid the commob problems when using paper or Excel systems.</p>
+            <div className="border-l-4 border-indigo-500 pl-8 mt-8">
+              <h5 className="text-lg text-indigo-700 pb-2">
+                Find out more now
+              </h5>
+              <p className="text-gray-900 pb-8">
+                With all paper and other software systems such as Excel, they
+                come with their problems.
+              </p>
+              <Link href="/about/sign-in-overview">
+                <button
+                  type="button"
+                  className="inline-flex items-center px-8 py-3 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-300 to-indigo-400 hover:from-indigo-400 hover:to-indigo500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                  Sign-in problems{' '}
+                  <span className="pl-4">
+                    <FiArrowRight size={20} />
+                  </span>
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
