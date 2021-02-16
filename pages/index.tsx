@@ -26,7 +26,7 @@ const HowItWorksFeature = ({ imgSrc, title, text }: HowItWorksFeatureProps) => (
 );
 
 const Feature = ({ imgSrc, title, text }: FeatureProps) => (
-  <div className="pr-8">
+  <div className="pr-8 h-64">
     <Image src={imgSrc} height={50} width={50} />
     <h5 className="text-xl pt-4 font-bold text-gray-900">{title}</h5>
     <p>{text}</p>
@@ -65,14 +65,17 @@ export default function Home() {
           </div>
         </nav>
         <div className="text-center py-24">
-          <h1 className="text-4xl w-1/4 mx-auto pb-8">
-            Sign-in software designed for{' '}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl mx-auto">
+            <span className="block">Sign-in software designed for</span>
             <span className="text-indigo-500">your business</span>
           </h1>
-          <p className="text-xl w-1/4 mx-auto font-medium pb-16">
-            Throw out the paper and start managing your members like it's the
-            21st century
-          </p>
+          <h2 className="text-base md:text-xl text-gray-500 mx-auto font-medium mt-8 mb-16">
+            <span className="block">
+              Throw out the paper and start managing your
+            </span>
+            <span>members like it's the</span>
+            21st century.
+          </h2>
           <button
             type="button"
             className="inline-flex items-center px-12 py-4 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-300 to-indigo-400 hover:from-indigo-400 hover:to-indigo500 focus:outline-none focus:ring-2  focus:ring-indigo-500"
@@ -82,9 +85,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto my-48">
-        <div className="grid gap-36 sm:grid-cols-1 md:grid-cols-2 items-center">
-          <div>
+      <div className="mx-auto max-w-6xl px-4 my-24 md:my-32">
+        <section className="md:flex items-center flex-row mx-auto mb-24 md:mb-32">
+          <div className="flex-1 flex flex-col mb-8 px-0 mr-0 md:mr-32">
             <h5 className="text-3xl pb-4">Store members electronically</h5>
             <p>
               Throw out the three-ring binders and delete those Excel
@@ -92,23 +95,15 @@ export default function Home() {
               centrally stored in one easy to navigate space.
             </p>
           </div>
-          <div className="ml-auto">
-            <Image
-              className="rounded-xl"
+          <div className="flex-1 pt-4 md:pt-0">
+            <img
+              className="rounded-xl w-fulll h-auto"
               src="/features/whatwesolve.png"
-              width={400}
-              height={400}
             />
           </div>
-          <div>
-            <Image
-              className="rounded-xl"
-              src="/features/whatwesolve.png"
-              width={400}
-              height={400}
-            />
-          </div>
-          <div>
+        </section>
+        <section className="md:flex items-center flex-row mx-auto mb-24 md:mb-32">
+          <div className="flex-1 flex flex-col mb-8">
             <h5 className="text-3xl pb-4">Monitor and manage</h5>
             <p>
               Look, mistakes happen. Easily verify your member data is
@@ -116,7 +111,15 @@ export default function Home() {
               signatures.
             </p>
           </div>
-          <div>
+          <div className="flex-1 pt-4 md:pt-0 order-first px-0 mr-0 md:mr-32">
+            <img
+              className="rounded-xl w-fulll h-auto"
+              src="/features/whatwesolve.png"
+            />
+          </div>
+        </section>
+        <section className="md:flex items-center flex-row mx-auto">
+          <div className="flex-1 flex flex-col mb-8 px-0 mr-0 md:mr-32">
             <h5 className="text-3xl pb-4">Throw out the paper</h5>
             <p>
               Throw out the three-ring binders and delete those Excel
@@ -124,21 +127,18 @@ export default function Home() {
               centrally stored in one easy to navigate space.
             </p>
           </div>
-          <div className="ml-auto">
-            <Image
-              className="rounded-xl"
+          <div className="flex-1 pt-4 md:mt-0">
+            <img
+              className="rounded-xl w-fulll h-auto"
               src="/features/whatwesolve.png"
-              width={400}
-              height={400}
             />
           </div>
-        </div>
+        </section>
       </div>
-
       <div className="bg-gray-100 mb-48">
         <div className="max-w-6xl py-24 mx-auto">
           <h3 className="text-3xl text-center">How it works</h3>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8">
             <HowItWorksFeature
               imgSrc="/howitworks/signup.svg"
               title="Sign up"
@@ -149,67 +149,23 @@ export default function Home() {
               title="Add members"
               text="Your employees add and update members to the sign in"
             />
-            <HowItWorksFeature
-              imgSrc="/howitworks/manage.svg"
-              title="Manage"
-              text="Prevent common human errors like duplicate entries or numbers"
-            />
+            <div className="col-span-1 md:col-span-2 lg:col-span-1">
+              <HowItWorksFeature
+                imgSrc="/howitworks/manage.svg"
+                title="Manage"
+                text="Prevent common human errors like duplicate entries or numbers"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Features section */}
-      <div className="max-w-6xl mx-auto mb-48">
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center">
-          <div>
-            <div className="pb-16">
-              <Feature
-                imgSrc="/features/simpleinterface.svg"
-                title="Simple interface"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-            <div className="pb-16">
-              <Feature
-                imgSrc="/features/authorization.svg"
-                title="Authorization"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-            <div>
-              <Feature
-                imgSrc="/features/findmembers.svg"
-                title="Easily find members"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-          </div>
-          <div>
-            <div className="pb-16">
-              <Feature
-                imgSrc="/features/fastdashboard.svg"
-                title="Fast dashboard"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-            <div className="pb-16">
-              <Feature
-                imgSrc="/features/nopaper.svg"
-                title="No more paper"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-            <div>
-              <Feature
-                imgSrc="/features/247support.svg"
-                title="24/7 Support"
-                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
-              />
-            </div>
-          </div>
-          <div className="col-span-2 ml-36">
+      <div className="max-w-6xl mx-auto mb-48 px-4">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 items-center">
+          <div className="col-span-2 mr-0 md:mr-16">
             <h3 className="text-3xl pb-4">Features</h3>
-            <p>Avoid the commob problems when using paper or Excel systems.</p>
+            <p>Avoid the common problems when using paper or Excel systems.</p>
             <div className="border-l-4 border-indigo-500 pl-8 mt-8">
               <h5 className="text-lg text-indigo-700 pb-2">
                 Find out more now
@@ -229,6 +185,48 @@ export default function Home() {
                   </span>
                 </button>
               </Link>
+            </div>
+          </div>
+          <div className="mt-32 md:mt-0">
+            <Feature
+              imgSrc="/features/simpleinterface.svg"
+              title="Simple interface"
+              text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+            />
+
+            <Feature
+              imgSrc="/features/authorization.svg"
+              title="Authorization"
+              text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+            />
+
+            <div>
+              <Feature
+                imgSrc="/features/findmembers.svg"
+                title="Easily find members"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
+            </div>
+          </div>
+          <div className="mt-32 md:mt-0">
+            <Feature
+              imgSrc="/features/fastdashboard.svg"
+              title="Fast dashboard"
+              text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+            />
+
+            <Feature
+              imgSrc="/features/nopaper.svg"
+              title="No more paper"
+              text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+            />
+
+            <div>
+              <Feature
+                imgSrc="/features/247support.svg"
+                title="24/7 Support"
+                text="Do yourself a favor and throw away all of those three-ring binders and stacks of ineligible paper."
+              />
             </div>
           </div>
         </div>
