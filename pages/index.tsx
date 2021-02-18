@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 
+import { useAuth } from '../lib/auth';
+
 interface HowItWorksFeatureProps {
   imgSrc: string;
   title: string;
@@ -34,6 +36,8 @@ const Feature = ({ imgSrc, title, text }: FeatureProps) => (
 );
 
 export default function Home() {
+  const auth = useAuth();
+
   return (
     <>
       {/* Jumbotron section */}
@@ -59,7 +63,7 @@ export default function Home() {
             </Link>
             <Link href="/login">
               <a className="mx-4 hover:text-gray-800" href="/login">
-                Sign in
+                {auth.user ? 'Dashboard' : 'Sign in'}
               </a>
             </Link>
           </div>

@@ -1,20 +1,27 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 
 import Shell from '@/components/Container';
 import { useAuth } from '@/lib/auth';
+import { Router } from 'next/router';
 
 const login = () => {
+  const router = useRouter();
   const auth = useAuth();
+
+  const handleLogin = async () => {
+    auth.signinWithGoogle();
+
+    if (auth.user !== 'false') await router.push('/dashboard');
+  };
 
   return (
     <Shell>
       {auth.user ? <p>{auth.user.email}</p> : <p>no user</p>}
       <div className="flex justify-center">
-        <div className="flex-col w-1/3">
-          <h1 className="text-4xl pb-2 text-gray-900 font-bold">
-            Sign in to your account
-          </h1>
+        <div className="flex-col">
+          <h1 className="text-4xl pb-2 font-bold">Sign in to your account</h1>
           <p className="text-center">
             Don't have an account?{' '}
             <span className="text-blue-500">
@@ -26,7 +33,7 @@ const login = () => {
           <button
             type="button"
             className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-white border-gray-200 hover:border-gray-300"
-            onClick={() => auth.signinWithGoogle()}
+            onClick={handleLogin}
           >
             <FcGoogle className="mr-4" size={20} /> Sign in with Google
           </button>
@@ -75,7 +82,7 @@ const login = () => {
           </div>
           <button
             type="button"
-            className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600"
+            className="flex justify-center items-center w-full mt-8 px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-600"
           >
             Sign in
           </button>

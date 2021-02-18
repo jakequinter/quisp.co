@@ -29,7 +29,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "lib/auth.js", "pages/_document.js"  ],
+, "lib/auth.js", "pages/_document.js", "lib/firebase-admin.js"  ],
   "exclude": [
     "node_modules"
   ]
