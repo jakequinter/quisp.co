@@ -9,3 +9,7 @@ export function createUser(uid, data) {
     .doc(uid)
     .set({ uid, ...data }, { merge: true });
 }
+
+export function createMember(data) {
+  return firestore.collection('members').add(data);
+}

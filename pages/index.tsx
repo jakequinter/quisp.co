@@ -61,11 +61,17 @@ export default function Home() {
                 FAQ
               </a>
             </Link>
-            <Link href="/login">
-              <a className="mx-4 hover:text-gray-800" href="/login">
-                {auth.user ? 'Dashboard' : 'Sign in'}
-              </a>
-            </Link>
+            {!auth.user ? (
+              <Link href="/login">
+                <a className="mx-4 hover:text-gray-800">Sign in</a>
+              </Link>
+            ) : (
+              <Link href="/dashboard">
+                <a className="mx-4 text-gray-800 bg-gray-300 p-1 rounded-md">
+                  Dashboard
+                </a>
+              </Link>
+            )}
           </div>
         </nav>
         <div className="text-center py-24">

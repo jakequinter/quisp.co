@@ -10,11 +10,13 @@ const login = () => {
   const router = useRouter();
   const auth = useAuth();
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     auth.signinWithGoogle();
-
-    if (auth.user !== 'false') await router.push('/dashboard');
   };
+
+  if (auth.user) {
+    router.push('/dashboard');
+  }
 
   return (
     <Shell>
