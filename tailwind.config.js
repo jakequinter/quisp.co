@@ -12,7 +12,7 @@ module.exports = {
       gray: colors.trueGray,
       indigo: colors.indigo,
       red: colors.rose,
-      yellow: colors.amber,
+      blue: colors.blue,
       chakra50: '#F7FAFC',
       chakra100: '#EDF2F7',
       chakra200: '#E2E8F0',

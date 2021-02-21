@@ -13,3 +13,4 @@ export function createUser(uid, data) {
 export function createMember(data) {
   return firestore.collection('members').add(data);
 }
+

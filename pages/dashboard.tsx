@@ -1,16 +1,30 @@
-import NewMemberModal from '@/components/NewMemberModal';
+import Head from 'next/head';
 import { useState } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
+import { Toaster } from 'react-hot-toast';
 
 import DashboardShell from '../components/DashboardShell';
 import Sidebar from '../components/Sidebar';
 import MembersTable from '../components/MembersTable';
+import NewMemberModal from '@/components/NewMemberModal';
 
 const dashboard = () => {
   const [showNewMemberModal, setShowNewMemberModal] = useState(false);
 
   return (
     <DashboardShell>
+      <Head>
+        <title>Dashboard</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!document.cookie || !document.cookie.includes('quisp-auth')) {
+                window.location.href = "/"
+              }
+            `
+          }}
+        />
+      </Head>
       <div className="h-screen flex overflow-hidden">
         {/* <div className="md:hidden">
           <div className="fixed inset-0 flex z-40">
@@ -105,10 +119,11 @@ const dashboard = () => {
           </div>
         </div> */}
 
-        <div className="hidden md:flex md:flex-shrink-0">
+        <div className="hidden md:flex md:flex-shrink-0 py-6">
           <Sidebar />
         </div>
         <div className="flex flex-col w-0 flex-1 overflow-hidden">
+          <Toaster />
           <div className="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3">
             <button className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open sidebar</span>
@@ -149,10 +164,7 @@ const dashboard = () => {
                   <MembersTable />
                 </div>
                 {showNewMemberModal && (
-                  <NewMemberModal
-                    isOpen={showNewMemberModal}
-                    setIsOpen={setShowNewMemberModal}
-                  />
+                  <NewMemberModal setIsOpen={setShowNewMemberModal} />
                 )}
               </div>
             </div>

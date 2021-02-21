@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
@@ -20,7 +21,18 @@ const login = () => {
 
   return (
     <Shell>
-      {auth.user ? <p>{auth.user.email}</p> : <p>no user</p>}
+      <Head>
+        <title>Sign in</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (document.cookie && document.cookie.includes('quisp-auth')) {
+                window.location.href = "/dashboard"
+              }
+            `
+          }}
+        />
+      </Head>
       <div className="flex justify-center">
         <div className="flex-col">
           <h1 className="text-4xl pb-2 font-bold">Sign in to your account</h1>
