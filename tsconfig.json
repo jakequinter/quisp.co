@@ -29,7 +29,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "lib/auth.js", "pages/_document.tsx", "lib/firebase-admin.js", "lib/db-admin.js", "utils/fetcher.js"  ],
+, "lib/auth.js", "pages/_document.tsx", "lib/firebase-admin.js", "lib/db-admin.js", "utils/fetcher.js", "pages/m/[memberId].tsx", "components/Pagination.js", "pages/delete.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,37 +1,31 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { mutate } from 'swr';
-import toast, { Toaster } from 'react-hot-toast';
+import { getAllMembers, getSingleMember } from '@/lib/db-admin';
 
-import { useAuth } from '../lib/auth';
-import { deleteMember, updateMember } from '../lib/db';
+export async function getStaticProps(context) {
+  const memberId = context.params.memberId;
+  const member = await getSingleMember(memberId);
 
-// interface NewMemberModalProps {
-//   setIsOpen: () =>
-// }
-
-const EditMemberModal = ({ setIsOpen, member }) => {
-  const auth = useAuth();
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = async fields => {
-    await updateMember(member.id, fields);
-
-    mutate([`/api/members`, auth.user.token]);
-
-    setIsOpen(false);
-    toast.success(`${member.name} was updated successfully`);
+  return {
+    props: {
+      initialMember: member
+    }
   };
+}
 
-  const onDeleteMember = async id => {
-    await deleteMember(id);
-
-    mutate([`/api/members`, auth.user.token]);
-
-    setIsOpen(false);
-    toast.success(`${name} was deleted successfully`);
+export async function getStaticPaths() {
+  const members = await getAllMembers();
+  const paths = members.map(member => ({
+    params: {
+      memberId: member.id.toString()
+    }
+  }));
+  return {
+    paths,
+    fallback: false
   };
+}
 
+const Member = ({ initialMember }) => {
+  console.log(initialMember);
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen px-4 pb-20 text-center sm:block sm:p-0">
@@ -52,12 +46,13 @@ const EditMemberModal = ({ setIsOpen, member }) => {
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <form onSubmit={handleSubmit(onSubmit)}>
+          {/* onSubmit={handleSubmit(onSubmit)} */}
+          <form>
             <h3
               className="text-xl font-medium text-chakra700 text-center"
               id="modal-headline"
             >
-              {member.name}
+              Edit
             </h3>
             <div className="my-10">
               <div className="mb-6">
@@ -69,21 +64,19 @@ const EditMemberModal = ({ setIsOpen, member }) => {
                 </label>
                 <div className="mt-1">
                   <input
-                    onChange={e => e.target.value}
                     type="text"
                     name="name"
                     id="name"
                     className="shadow-sm  focus:border-green-500 block w-full sm:text-sm border-chakra300 rounded-md"
-                    defaultValue={member.name}
-                    ref={register({
-                      required: 'Required'
-                    })}
+                    // ref={register({
+                    //   required: 'Required'
+                    // })}
                   />
                 </div>
               </div>
               <div>
                 <label
-                  htmlFor="number"
+                  htmlFor="title"
                   className="block text-sm font-medium text-chakra700"
                 >
                   Sign in number
@@ -94,10 +87,9 @@ const EditMemberModal = ({ setIsOpen, member }) => {
                     name="number"
                     id="number"
                     className="shadow-sm focus:ring-indigo-500 focus:border-blue-500 block w-full sm:text-sm border-chakra300 rounded-md"
-                    defaultValue={member.number}
-                    ref={register({
-                      required: 'Required'
-                    })}
+                    // ref={register({
+                    //   required: 'Required'
+                    // })}
                   />
                 </div>
               </div>
@@ -107,17 +99,10 @@ const EditMemberModal = ({ setIsOpen, member }) => {
                 type="submit"
                 className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm mx-2 px-4 py-2 bg-indigo-300 text-indigo-900 font-medium hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
               >
-                Update
+                Update member
               </button>
-              {/* <button
-                onClick={() => onDeleteMember(member.id)}
-                type="button"
-                className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm mx-2 px-4 py-2 bg-red-300 font-medium text-red-900 text-chakra-900 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-              >
-                Delete
-              </button> */}
               <button
-                onClick={() => setIsOpen(false)}
+                // onClick={() => setIsOpen(false)}
                 type="button"
                 className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm mx-2 px-4 py-2 bg-chakra200 text-base font-medium text-chakra-900 hover:bg-chakra300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
               >
@@ -131,4 +116,4 @@ const EditMemberModal = ({ setIsOpen, member }) => {
   );
 };
 
-export default EditMemberModal;
+export default Member;

@@ -106,10 +106,14 @@ export default function Home() {
             </p>
           </div>
           <div className="flex-1 pt-4 md:pt-0">
-            <img
-              className="rounded-xl w-fulll h-auto"
-              src="/features/whatwesolve.png"
-            />
+            <div className="bg-indigo-200 p-4 rounded">
+              <img
+                className="rounded-xl w-full h-auto"
+                src="/dashboard.svg"
+                // height={695}
+                // width={501}
+              />
+            </div>
           </div>
         </section>
         <section className="md:flex items-center flex-row mx-auto mb-24 md:mb-32">
@@ -122,10 +126,14 @@ export default function Home() {
             </p>
           </div>
           <div className="flex-1 pt-4 md:pt-0 order-first px-0 mr-0 md:mr-32">
-            <img
-              className="rounded-xl w-fulll h-auto"
-              src="/features/whatwesolve.png"
-            />
+            <div className="bg-indigo-200 p-4 rounded">
+              <img
+                className="rounded-xl w-full h-auto"
+                src="/addMember.svg"
+                // height={695}
+                // width={501}
+              />
+            </div>
           </div>
         </section>
         <section className="md:flex items-center flex-row mx-auto">
@@ -139,7 +147,7 @@ export default function Home() {
           </div>
           <div className="flex-1 pt-4 md:mt-0">
             <img
-              className="rounded-xl w-fulll h-auto"
+              className="rounded-xl w-full h-auto"
               src="/features/whatwesolve.png"
             />
           </div>

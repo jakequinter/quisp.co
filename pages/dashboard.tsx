@@ -7,9 +7,16 @@ import DashboardShell from '../components/DashboardShell';
 import Sidebar from '../components/Sidebar';
 import MembersTable from '../components/MembersTable';
 import NewMemberModal from '@/components/NewMemberModal';
+import EditMemberModal from '@/components/EditMemberModal';
 
 const dashboard = () => {
   const [showNewMemberModal, setShowNewMemberModal] = useState(false);
+  const [showEditMemberModal, setShowEditMemberModal] = useState(false);
+  const [member, setMember] = useState({
+    id: null,
+    name: null,
+    number: null
+  });
 
   return (
     <DashboardShell>
@@ -160,11 +167,20 @@ const dashboard = () => {
                 </button>
               </div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <div className="py-4">
-                  <MembersTable />
+                <div className="py-4 ">
+                  <MembersTable
+                    setIsOpen={setShowEditMemberModal}
+                    setMember={setMember}
+                  />
                 </div>
                 {showNewMemberModal && (
                   <NewMemberModal setIsOpen={setShowNewMemberModal} />
+                )}
+                {showEditMemberModal && (
+                  <EditMemberModal
+                    setIsOpen={setShowEditMemberModal}
+                    member={member}
+                  />
                 )}
               </div>
             </div>

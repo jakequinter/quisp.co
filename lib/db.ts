@@ -14,3 +14,11 @@ export function createMember(data) {
   return firestore.collection('members').add(data);
 }
 
+export async function updateMember(id, newValues) {
+  return firestore.collection('members').doc(id).update(newValues);
+}
+
+export function deleteMember(id) {
+  return firestore.collection('members').doc(id).delete();
+}
+

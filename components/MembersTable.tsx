@@ -1,17 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { format, parseISO } from 'date-fns';
 
-import EditMemberModal from '../components/EditMemberModal';
+import Pagination from '../components/Pagination.js';
+import Members from '../components/Members';
 import fetcher from '../utils/fetcher';
 import { useAuth } from '../lib/auth';
 
-const MembersTable = () => {
+const MembersTable = ({ setIsOpen, setMember }) => {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['/api/members', user.token] : null, fetcher);
-  const [showEditMemberModal, setShowEditMemberModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [MembersPerPage] = useState(10);
 
-  if (!data) return null;
+  // get current page of members
+  const indexOfLastPost = currentPage * MembersPerPage;
+  const indexOfFirstPost = indexOfLastPost - MembersPerPage;
+
+  if (!data)
+    return (
+      <div className="flex justify-center">
+        <h1 className="text-4xl">'Loading...'</h1>
+      </div>
+    );
+
+  const handleSetEditModalProps = member => {
+    setIsOpen(true);
+    setMember({
+      id: member.id,
+      name: member.name,
+      number: member.number
+    });
+  };
 
   return (
     <div className="flex flex-col">
@@ -41,30 +61,42 @@ const MembersTable = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {data.members &&
-                  data.members.map(member => (
-                    <tr className="bg-white">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <a
-                          href={`/api/members/${member.id}`}
-                          className="text-blue-600 hover:text-blue-700 cursor-pointer"
-                          // onClick={() => setShowEditMemberModal(true)}
-                        >
-                          {member.name}
-                        </a>
-                      </td>
+              {/* <tbody> */}
+              {/* {currentMembers.map(member => (
+                  <tr className="bg-white border-b border-chakra200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <a
+                        // href={`/api/members/${member.id}`}
+                        className="text-blue-600 hover:text-blue-700 cursor-pointer"
+                        onClick={() => handleSetEditModalProps(member)}
+                      >
+                        {member.name}
+                      </a>
+                    </td>
 
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-chakra500">
-                        {member.number}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-chakra500">
-                        {format(parseISO(member.date), 'PP')}
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-chakra500">
+                      {member.number}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-chakra500">
+                      {format(parseISO(member.date), 'PP')}
+                    </td>
+                  </tr>
+                ))} */}
+              {/* </tbody> */}
+              <Members
+                members={data.members.slice(indexOfFirstPost, indexOfLastPost)}
+                handleSetEditModalProps={handleSetEditModalProps}
+              />
             </table>
+          </div>
+          <div className="flex justify-end pt-4">
+            <Pagination
+              membersPerPage={MembersPerPage}
+              totalPosts={data.members.length}
+              next={() => setCurrentPage(currentPage + 1)}
+              previous={() => setCurrentPage(currentPage - 1)}
+              currentPage={currentPage}
+            />
           </div>
         </div>
       </div>
