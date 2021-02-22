@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import { useAuth } from '../lib/auth';
 import { deleteMember, updateMember } from '../lib/db';

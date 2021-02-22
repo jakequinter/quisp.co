@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
-import { format, parseISO } from 'date-fns';
 
 import Pagination from '../components/Pagination.js';
 import Members from '../components/Members';
