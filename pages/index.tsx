@@ -85,12 +85,14 @@ export default function Home() {
             <span>members like it's the</span>
             21st century.
           </h2>
-          <button
-            type="button"
-            className="inline-flex items-center px-12 py-4 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-300 to-indigo-400 hover:from-indigo-400 hover:to-indigo500 focus:outline-none focus:ring-2  focus:ring-indigo-500"
-          >
-            Get started for free
-          </button>
+          <Link href={!auth.user ? '/login' : '/dashboard'}>
+            <button
+              type="button"
+              className="inline-flex items-center px-12 py-4 font-medium rounded-md shadow-sm text-indigo-900 bg-gradient-to-r from-indigo-300 to-indigo-400 hover:from-indigo-400 hover:to-indigo500 focus:outline-none focus:ring-2  focus:ring-indigo-500"
+            >
+              {!auth.user ? 'Get started for free' : 'Go to dashboard'}
+            </button>
+          </Link>
         </div>
       </div>
 
