@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
-import Container from '@/components/Container';
+import Container from '~/components/Container';
 
 const faq = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -6,12 +6,14 @@ import { Toaster } from 'react-hot-toast';
 import DashboardShell from '../components/DashboardShell';
 import Sidebar from '../components/Sidebar';
 import MembersTable from '../components/MembersTable';
-import NewMemberModal from '@/components/NewMemberModal';
-import EditMemberModal from '@/components/EditMemberModal';
+import NewMemberModal from '~/components/NewMemberModal';
+import EditMemberModal from '~/components/EditMemberModal';
+import SearchBar from '~/components/SearchBar';
 
 const dashboard = () => {
   const [showNewMemberModal, setShowNewMemberModal] = useState(false);
   const [showEditMemberModal, setShowEditMemberModal] = useState(false);
+  const [filter, setFilter] = useState('');
   const [member, setMember] = useState({
     id: null,
     name: null,
@@ -157,20 +159,24 @@ const dashboard = () => {
                 <h1 className="text-2xl font-semibold text-gray-900">
                   Dashboard
                 </h1>
-                <button
-                  type="button"
-                  className="inline-flex items-center px-4 py-2 font-medium rounded-md text-sm shadow-sm text-chakra700 bg-white hover:bg-chakra50 focus:outline-none focus:ring-2  focus:ring-indigo-500"
-                  onClick={() => setShowNewMemberModal(true)}
-                >
-                  Add member
-                  <FaUserPlus className="ml-4 text-chakra700" />
-                </button>
+                <div className="flex">
+                  <SearchBar handleChange={e => setFilter(e.target.value)} />
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 font-medium rounded-md text-sm shadow-sm text-chakra700 bg-white hover:bg-chakra50 focus:outline-none focus:ring-2  focus:ring-indigo-500"
+                    onClick={() => setShowNewMemberModal(true)}
+                  >
+                    Add member
+                    <FaUserPlus className="ml-4 text-chakra700" />
+                  </button>
+                </div>
               </div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 <div className="py-4 ">
                   <MembersTable
                     setIsOpen={setShowEditMemberModal}
                     setMember={setMember}
+                    filter={filter}
                   />
                 </div>
                 {showNewMemberModal && (

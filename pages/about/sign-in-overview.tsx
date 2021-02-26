@@ -1,4 +1,4 @@
-import Shell from '@/components/Container';
+import Shell from '~/components/Container';
 
 const signInOverview = () => {
   return (

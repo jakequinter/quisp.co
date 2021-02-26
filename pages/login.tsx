@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 
-import Shell from '@/components/Container';
-import { useAuth } from '@/lib/auth';
+import Shell from '~/components/Container';
+import { useAuth } from '~/lib/auth';
 import { Router } from 'next/router';
 
 const login = () => {

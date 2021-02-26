@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FiCheckCircle } from 'react-icons/fi';
 
-import Shell from '@/components/Container';
+import Shell from '~/components/Container';
 
 const ListItem = ({ title, text }) => (
   <div className="flex pt-8">

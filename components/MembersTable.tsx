@@ -7,15 +7,26 @@ import Members from '../components/Members';
 import fetcher from '../utils/fetcher';
 import { useAuth } from '../lib/auth';
 
-const MembersTable = ({ setIsOpen, setMember }) => {
+interface MemberProps {
+  id: string;
+  name: string;
+  number: string;
+}
+interface MembersTableProps {
+  filter: string;
+  setIsOpen: (bool) => void;
+  setMember: (member: MemberProps) => void;
+}
+
+const MembersTable = ({ filter, setIsOpen, setMember }: MembersTableProps) => {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['/api/members', user.token] : null, fetcher);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [MembersPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [membersPerPage] = useState(15);
 
   // get current page of members
-  const indexOfLastPost = currentPage * MembersPerPage;
-  const indexOfFirstPost = indexOfLastPost - MembersPerPage;
+  // const indexOfLastPost = currentPage * MembersPerPage;
+  // const indexOfFirstPost = indexOfLastPost - MembersPerPage;
 
   // if (!data)
   //   return (
@@ -65,10 +76,14 @@ const MembersTable = ({ setIsOpen, setMember }) => {
                 <TableSkeleton />
               ) : (
                 <Members
-                  members={data.members.slice(
-                    indexOfFirstPost,
-                    indexOfLastPost
-                  )}
+                  // members={data.members.slice(
+                  //   currentPage * membersPerPage,
+                  //   currentPage * membersPerPage + membersPerPage
+                  // )}
+                  members={data.members}
+                  currentPage={currentPage}
+                  membersPerPage={membersPerPage}
+                  filter={filter}
                   handleSetEditModalProps={handleSetEditModalProps}
                 />
               )}
@@ -77,7 +92,7 @@ const MembersTable = ({ setIsOpen, setMember }) => {
           <div className="flex justify-end pt-4">
             {data ? (
               <Pagination
-                membersPerPage={MembersPerPage}
+                membersPerPage={membersPerPage}
                 totalPosts={data.members.length}
                 next={() => setCurrentPage(currentPage + 1)}
                 previous={() => setCurrentPage(currentPage - 1)}

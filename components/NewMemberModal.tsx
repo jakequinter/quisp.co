@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 import toast from 'react-hot-toast';
@@ -6,11 +5,11 @@ import toast from 'react-hot-toast';
 import { useAuth } from '../lib/auth';
 import { createMember } from '../lib/db';
 
-// interface NewMemberModalProps {
-//   setIsOpen: () =>
-// }
+interface NewMemberModalProps {
+  setIsOpen: (bool) => void;
+}
 
-const NewMemberModal = ({ setIsOpen }) => {
+const NewMemberModal = ({ setIsOpen }: NewMemberModalProps) => {
   const auth = useAuth();
   const { register, handleSubmit } = useForm();
 

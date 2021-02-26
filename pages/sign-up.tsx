@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '~/lib/auth';
 
-import Shell from '@/components/Container';
+import Shell from '~/components/Container';
 
 const SignUp = () => {
   const auth = useAuth();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
 
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '~/lib/auth';
 
 interface ContainerProps {
   children: ReactNode;

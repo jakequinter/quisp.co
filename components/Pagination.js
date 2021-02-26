@@ -18,15 +18,15 @@ const Pagination = ({
       <button
         className="bg-white p-1 mr-2 rounded-lg text-chakra500"
         onClick={previous}
-        disabled={currentPage === 1}
+        disabled={currentPage + 1 === 1}
       >
         <FiChevronLeft size={14} />
       </button>
-      <span className="font-medium text-indigo-500">{currentPage}</span>
+      <span className="font-medium text-indigo-500">{currentPage + 1}</span>
       <button
-        className="bg-white p-1 ml-2 rounded-lg text-chakra500"
+        className="bg-white p-1 ml-2 rounded-lg text-chakra500 hover:bg-chakra50"
         onClick={next}
-        disabled={currentPage === pageNumbers.length}
+        disabled={currentPage + 1 === pageNumbers.length}
       >
         <FiChevronRight size={14} />
       </button>
